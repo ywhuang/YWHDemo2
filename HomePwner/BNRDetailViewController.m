@@ -36,15 +36,11 @@
 
     if (self) {
         if (isNew) {
-            UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                                                      target:self
-                                                                                      action:@selector(save:)];
-            self.navigationItem.rightBarButtonItem = doneItem;
-
-            UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-                                                                                        target:self
-                                                                                        action:@selector(cancel:)];
-            self.navigationItem.leftBarButtonItem = cancelItem;
+            UIBarButtonItem * cancelItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
+            self.navigationItem.rightBarButtonItem = cancelItem;
+            UIBarButtonItem * doneItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(save:)];
+            self.navigationItem.leftBarButtonItem = doneItem;
+            
         }
     }
 
@@ -189,8 +185,8 @@
 {
     // If the user cancelled, then remoce the BNRItem from the store
     [[BNRItemStore sharedStore] removeItem:self.item];
-
     [self.presentingViewController dismissViewControllerAnimated:YES completion:self.dismissBlock];
+   
 }
 
 - (IBAction)takePicture:(id)sender

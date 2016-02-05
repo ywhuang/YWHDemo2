@@ -18,16 +18,25 @@
 
 @implementation BNRItemStore
 
-+ (instancetype)sharedStore
++ (BNRItemStore *)sharedStore
 {
-    static BNRItemStore *sharedStore;
-
-    // Do I need to create a sharedStore?
-    if (!sharedStore) {
-        sharedStore = [[self alloc] initPrivate];
-    }
-
+    static BNRItemStore * sharedStore;
+    static dispatch_once_t once;
+    
+    dispatch_once(&once, ^{
+        sharedStore = [[self alloc]initPrivate];
+    });
+    
     return sharedStore;
+//    static BNRItemStore *sharedStore;
+//
+//    // Do I need to create a sharedStore?
+//    if (!sharedStore) {
+//        sharedStore = [[self alloc] initPrivate];
+//    }
+//
+//    return sharedStore;
+    
 }
 
 // If a programmer calls [[BNRItemStore alloc] init], let him
