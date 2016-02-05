@@ -101,13 +101,34 @@
 {
     // If the table view is asking to commit a delete command...
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSArray *items = [[BNRItemStore sharedStore] allItems];
-        BNRItem *item = items[indexPath.row];
-        [[BNRItemStore sharedStore] removeItem:item];
-
-        // Also remove that row from the table view with an animation
-        [tableView deleteRowsAtIndexPaths:@[indexPath]
-                         withRowAnimation:UITableViewRowAnimationFade];
+        
+        UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"warning" message:@"deletion of the image failed." preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+        [alert addAction:cancelAction];
+        
+        UIAlertAction * okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            if (true) {
+                NSLog(@"Something with the OK button - %@", action);
+                NSArray *items = [[BNRItemStore sharedStore] allItems];
+                BNRItem *item = items[indexPath.row];
+                [[BNRItemStore sharedStore] removeItem:item];
+                
+                // Also remove that row from the table view with an animation
+                [tableView deleteRowsAtIndexPaths:@[indexPath]
+                                 withRowAnimation:UITableViewRowAnimationFade];
+            }
+            
+        }];
+        [alert addAction:okAction];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+//        NSArray *items = [[BNRItemStore sharedStore] allItems];
+//        BNRItem *item = items[indexPath.row];
+//        [[BNRItemStore sharedStore] removeItem:item];
+//
+//        // Also remove that row from the table view with an animation
+//        [tableView deleteRowsAtIndexPaths:@[indexPath]
+//                         withRowAnimation:UITableViewRowAnimationFade];
     }
 }
 

@@ -44,6 +44,9 @@
 
     if (self) {
         _dictionary = [[NSMutableDictionary alloc] init];
+        
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(cleanCached:) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
+        
     }
 
     return self;
@@ -84,6 +87,9 @@
         NSLog(@"delete Image success");
     } else {
         NSLog(@"delete Image failed");
+   
+        
+        
     }
 }
 
@@ -93,6 +99,11 @@
     
     
     return docPath;
+}
+
+- (void)cleanCached:(NSNotification *) note {
+    NSLog(@"Clean up BNRImageStore");
+    [self.dictionary removeAllObjects];
 }
 
 @end
