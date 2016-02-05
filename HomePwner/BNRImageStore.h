@@ -16,4 +16,5 @@
 - (UIImage *)imageForKey:(NSString *)key;
 - (void)deleteImageForKey:(NSString *)key;
 
+- (NSString *)filePathWithKey:(NSString *)key;
 @end
