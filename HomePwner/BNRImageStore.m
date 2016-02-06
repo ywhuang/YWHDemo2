@@ -44,6 +44,9 @@
 
     if (self) {
         _dictionary = [[NSMutableDictionary alloc] init];
+        
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(cleanCached:) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
+        
     }
 
     return self;
@@ -52,11 +55,25 @@
 - (void)setImage:(UIImage *)image forKey:(NSString *)key
 {
     self.dictionary[key] = image;
+    
+    NSData * data = UIImageJPEGRepresentation(image, 0.5);
+    BOOL success = [data writeToFile:[self filePathWithKey:key] atomically:YES];
+    NSLog(@"Image data write success %@",success?@"YES":@"NO");
 }
 
 - (UIImage *)imageForKey:(NSString *)key
 {
-    return self.dictionary[key];
+    UIImage * anImage = self.dictionary[key];
+    if (!anImage) {
+        anImage = [UIImage imageWithContentsOfFile:[self filePathWithKey:key]];
+        if (anImage) {
+            self.dictionary[key] = anImage;
+        } else {
+            NSLog(@"fetch image error");
+        }
+    }
+    
+    return anImage;
 }
 
 - (void)deleteImageForKey:(NSString *)key
@@ -65,6 +82,28 @@
         return;
     }
     [self.dictionary removeObjectForKey:key];
+    BOOL success =[[NSFileManager defaultManager] removeItemAtPath:[self filePathWithKey:key] error:nil];
+    if (success) {
+        NSLog(@"delete Image success");
+    } else {
+        NSLog(@"delete Image failed");
+   
+        
+        
+    }
+}
+
+- (NSString *)filePathWithKey:(NSString *)key {
+    NSArray* docPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString * docPath = [[docPaths firstObject] stringByAppendingPathComponent:key];
+    
+    
+    return docPath;
+}
+
+- (void)cleanCached:(NSNotification *) note {
+    NSLog(@"Clean up BNRImageStore");
+    [self.dictionary removeAllObjects];
 }
 
 @end
