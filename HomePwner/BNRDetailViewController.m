@@ -249,7 +249,8 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 
     // Store the image in the BNRImageStore for this key
     [[BNRImageStore sharedStore] setImage:image forKey:self.item.itemKey];
-
+    
+    [self.item setThumbnailFromImage:image];
     // Put that image onto the screen in our image view
     self.imageView.image = image;
 

@@ -85,6 +85,7 @@
         _dateCreated = [aDecoder decodeObjectForKey:@"dateCreated"];
         _serialNumber = [aDecoder decodeObjectForKey:@"serialNumber"];
         _valueInDollars = [aDecoder decodeIntForKey:@"valueInDollars"];
+        _thumbnail =  [aDecoder decodeObjectForKey:@"thumbnail"];
     }
     return self;
 }
@@ -95,6 +96,7 @@
     [aCoder encodeObject:self.serialNumber forKey:@"serialNumber"];
     [aCoder encodeObject:self.itemKey forKey:@"itemKey"];
     [aCoder encodeInt:self.valueInDollars forKey:@"valueInDollars"];
+    [aCoder encodeObject:self.thumbnail forKey:@"thumbnail"];
 }
 
 - (NSString *)description
@@ -106,6 +108,33 @@
                             self.valueInDollars,
                             self.dateCreated];
     return descriptionString;
+}
+- (void)setThumbnailFromImage:(UIImage *)image {
+    CGSize origImageSize = image.size;
+    CGRect newRect = CGRectMake(0, 0, 40, 40);
+    
+    UIGraphicsBeginImageContextWithOptions(newRect.size, NO, 0.0);
+    UIBezierPath * path = [UIBezierPath bezierPathWithRoundedRect:newRect cornerRadius:5.0];
+    [path addClip];
+    
+    CGRect projectRect;
+    
+    float ratio = MAX(newRect.size.width/origImageSize.width, newRect.size.height/origImageSize.height);
+    
+    projectRect.size.width = ratio * origImageSize.width;
+    projectRect.size.height = ratio * origImageSize.height;
+    //need to adjust origin too
+    projectRect.origin.x = (newRect.size.width - projectRect.size.width) / 2.0;
+    projectRect.origin.y = (newRect.size.height - projectRect.size.height) / 2.0;
+    
+    [image drawInRect:projectRect];
+    
+    UIImage * smallImage = UIGraphicsGetImageFromCurrentImageContext();
+    self.thumbnail = smallImage;
+    
+    //clean up memory
+    UIGraphicsEndImageContext();
+    
 }
 
 - (void)dealloc
