@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,28 +14,44 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEi-D2-paq">
-                        <rect key="frame" x="59" y="8" width="115" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEi-D2-paq">
+                        <rect key="frame" x="52" y="6" width="209" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VVJ-dE-iU9">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZt-2f-Q0M">
+                        <rect key="frame" x="52" y="26" width="49" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eYc-Zo-1D8">
+                        <rect key="frame" x="10" y="2" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="6eM-AE-hEz"/>
+                            <constraint firstAttribute="width" constant="40" id="xjf-8G-jAj"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VVJ-dE-iU9">
                         <rect key="frame" x="263" y="11" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZt-2f-Q0M">
-                        <rect key="frame" x="59" y="22" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eYc-Zo-1D8">
-                        <rect key="frame" x="8" y="9" width="42" height="25"/>
-                    </imageView>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="topMargin" secondItem="BEi-D2-paq" secondAttribute="top" constant="2" id="524-Qa-PR0"/>
+                    <constraint firstItem="eYc-Zo-1D8" firstAttribute="leading" secondItem="TbT-sI-nKZ" secondAttribute="leadingMargin" constant="2" id="D6d-v6-maF"/>
+                    <constraint firstItem="bZt-2f-Q0M" firstAttribute="top" secondItem="BEi-D2-paq" secondAttribute="bottom" constant="2" id="KOW-o1-T03"/>
+                    <constraint firstItem="VVJ-dE-iU9" firstAttribute="leading" secondItem="bZt-2f-Q0M" secondAttribute="trailing" priority="750" constant="162" id="Mkn-hm-XDs"/>
+                    <constraint firstItem="BEi-D2-paq" firstAttribute="leading" secondItem="eYc-Zo-1D8" secondAttribute="trailing" constant="2" id="SYD-6h-3FZ"/>
+                    <constraint firstItem="VVJ-dE-iU9" firstAttribute="leading" secondItem="BEi-D2-paq" secondAttribute="trailing" constant="2" id="fjI-VH-8q8"/>
+                    <constraint firstItem="eYc-Zo-1D8" firstAttribute="centerY" secondItem="TbT-sI-nKZ" secondAttribute="centerY" id="gVm-sy-M57"/>
+                    <constraint firstItem="bZt-2f-Q0M" firstAttribute="leading" secondItem="eYc-Zo-1D8" secondAttribute="trailing" constant="2" id="lRI-tM-qIa"/>
+                    <constraint firstItem="VVJ-dE-iU9" firstAttribute="centerY" secondItem="TbT-sI-nKZ" secondAttribute="centerY" id="oBw-Y6-maY"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="VVJ-dE-iU9" secondAttribute="trailing" constant="7" id="xEI-Es-yhg"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="nameLabel" destination="BEi-D2-paq" id="otX-cn-AXu"/>
