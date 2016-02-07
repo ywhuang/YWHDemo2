@@ -11,6 +11,8 @@
 #import "BNRItemStore.h"
 #import "BNRItem.h"
 #import "BNRItemCell.h"
+#import "BNRImageStore.h"
+#import "BNRImageViewController.h"
 
 @interface BNRItemsViewController ()
 
@@ -84,6 +86,35 @@
     cell.serialNumberLabel.text = item.serialNumber;
     cell.valueLabel.text = [NSString stringWithFormat:@"$%d", item.valueInDollars];
     cell.thumbnailView.image = item.thumbnail;
+    
+    __weak BNRItemCell * weakCell = cell;
+    cell.actionBlcok = ^{
+        NSLog(@"should be able to show image for %@",item);
+        
+        BNRItemCell * strongCell = weakCell;
+        
+        if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad ) {
+            NSString * key = item.itemKey;
+            UIImage * img = [[BNRImageStore sharedStore] imageForKey:key];
+            
+            if (!img) {
+                return;
+            }
+            
+            CGRect rect = [self.view convertRect:strongCell.thumbnailView.bounds fromCoordinateSpace:strongCell.thumbnailView];
+            
+            BNRImageViewController * ivc = [[BNRImageViewController alloc]init];
+            ivc.image = img;
+            
+            self.imagePopover = [[UIPopoverController alloc]initWithContentViewController:ivc];
+            
+            self.imagePopover.delegate = self;
+            //set content size for popover
+            self.imagePopover.popoverContentSize = CGSizeMake(600, 600);
+            
+            [self.imagePopover presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        }
+    };
 
     return cell;
 }
@@ -166,6 +197,10 @@
     nv.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self presentViewController:nv animated:YES completion:nil];
 
-   }
+}
+
+- (void) popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
+    self.imagePopover = nil;
+}
 
 @end

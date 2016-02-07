@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		057B4A1A1C6632D9006D0ADA /* BNRItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 057B4A191C6632D9006D0ADA /* BNRItemCell.m */; };
 		057B4A1C1C663317006D0ADA /* BNRItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 057B4A1B1C663317006D0ADA /* BNRItemCell.xib */; };
+		057B4A1F1C66C03B006D0ADA /* BNRImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 057B4A1E1C66C03B006D0ADA /* BNRImageViewController.m */; };
 		520AA47F187C4EC00048F174 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 520AA47E187C4EC00048F174 /* Foundation.framework */; };
 		520AA481187C4EC00048F174 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 520AA480187C4EC00048F174 /* CoreGraphics.framework */; };
 		520AA483187C4EC00048F174 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 520AA482187C4EC00048F174 /* UIKit.framework */; };
@@ -43,6 +44,8 @@
 		057B4A181C6632D9006D0ADA /* BNRItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItemCell.h; sourceTree = "<group>"; };
 		057B4A191C6632D9006D0ADA /* BNRItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItemCell.m; sourceTree = "<group>"; };
 		057B4A1B1C663317006D0ADA /* BNRItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BNRItemCell.xib; sourceTree = "<group>"; };
+		057B4A1D1C66C03B006D0ADA /* BNRImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRImageViewController.h; sourceTree = "<group>"; };
+		057B4A1E1C66C03B006D0ADA /* BNRImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRImageViewController.m; sourceTree = "<group>"; };
 		520AA47B187C4EC00048F174 /* YWHDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YWHDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		520AA47E187C4EC00048F174 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		520AA480187C4EC00048F174 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -145,6 +148,8 @@
 				057B4A181C6632D9006D0ADA /* BNRItemCell.h */,
 				057B4A191C6632D9006D0ADA /* BNRItemCell.m */,
 				057B4A1B1C663317006D0ADA /* BNRItemCell.xib */,
+				057B4A1D1C66C03B006D0ADA /* BNRImageViewController.h */,
+				057B4A1E1C66C03B006D0ADA /* BNRImageViewController.m */,
 				520AA490187C4EC00048F174 /* Images.xcassets */,
 				520AA485187C4EC00048F174 /* Supporting Files */,
 			);
@@ -281,6 +286,7 @@
 			files = (
 				520AA4BF187C87C50048F174 /* BNRDetailViewController.m in Sources */,
 				057B4A1A1C6632D9006D0ADA /* BNRItemCell.m in Sources */,
+				057B4A1F1C66C03B006D0ADA /* BNRImageViewController.m in Sources */,
 				520AA4B5187C4FC00048F174 /* BNRItemStore.m in Sources */,
 				520AA4C3187CAA690048F174 /* BNRImageStore.m in Sources */,
 				520AA4AF187C4EF00048F174 /* BNRItemsViewController.m in Sources */,

@@ -20,4 +20,10 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)showImage:(id)sender {
+    if (self.actionBlcok) {
+        self.actionBlcok();
+    }
+}
+
 @end
